@@ -1,0 +1,84 @@
+.card {
+    margin: 20px 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #222;
+    }
+
+    &__title {
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    &__category {
+        padding: 10px;
+    }
+
+    &__content {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__likeAndDislike {
+        display: flex;
+    }
+
+    &__like {
+        margin: 0 10px;
+    }
+
+    &__dislike {
+        margin: 0 10px;
+    }
+
+    &__gauge {
+        margin-top: 20px;
+        width: 75%;
+        height: 10px;
+        display: flex;
+
+        &--like {
+            height: 100%;
+            background-color: #075307;
+        }
+
+        &--dislike {
+            height: 100%;
+            background-color: #ff0000;
+        }
+    }
+
+    &__icon {
+        cursor: pointer;
+    }
+
+    &__button {
+        background-color: #222;
+        color: #fff;
+        padding: 10px;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fff;
+            color: #222;
+            border: 1px solid #222;
+            transition: .5s;
+        }
+    }
+
+    &__footer {
+        padding: 10px;
+        text-align: center;
+        border-top: 1px solid #555;
+    }
+}

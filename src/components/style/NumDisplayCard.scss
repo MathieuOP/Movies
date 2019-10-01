@@ -1,0 +1,21 @@
+.numCard {
+    display: flex;
+    margin-top: 50px;
+
+    &__number {
+        margin: 0 10px;
+        background-color: #222;
+        color: #fff;
+        border: 1px solid #fff;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+
+        &--active {
+            background-color: #fff;
+            color: #222;
+            border: none;
+        }
+    }
+}

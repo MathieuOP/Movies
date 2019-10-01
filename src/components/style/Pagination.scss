@@ -1,0 +1,21 @@
+.pagination {
+    margin-top: 20px;
+    
+    &__button {
+        margin: 0 10px;
+        background-color: #222;
+        border: 1px solid #fff;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        outline: none;
+        
+        &:hover {
+            background-color: #fff;
+            color: #222;
+            border: 1px solid #222;
+            transition: .5s;
+        }
+    }
+}
