@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import NumDisplayCard from '../components/NumDisplayCard';
+import NumDisplayCard from 'components/NumDisplayCard';
 
 // Action Creators
-import actions from '../store/actions';
+import { numberCardByPage } from 'store/actions';
  
 const mapStateToProps = null;
 
 const mapDispatchToProps = dispatch => ({
   numberCardByPage: (number) => (
-    dispatch(actions.numberCardByPage(number))
+    dispatch(numberCardByPage(number))
   ),
 });
 

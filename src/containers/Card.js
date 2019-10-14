@@ -5,22 +5,22 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Card from '../components/Card';
+import Card from 'components/Card';
 
 // Action Creators
-import actions from '../store/actions';
+import { deleteMovie, like, dislike } from '../store/actions';
  
 const mapStateToProps = null;
 
 const mapDispatchToProps = dispatch => ({
     deleteMovie: (id, category) => (
-        dispatch(actions.deleteMovie(id, category))
+        dispatch(deleteMovie(id, category))
     ),
     like: (id) => (
-        dispatch(actions.like(id))
+        dispatch(like(id))
     ),
     dislike: (id) => (
-        dispatch(actions.dislike(id))
+        dispatch(dislike(id))
     )
 });
 

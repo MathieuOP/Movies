@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style/NumDisplayCard.scss';
+import './NumDisplayCard.scss';
 
 const NumDisplayCard = ({ numberCardByPage }) => {
 
@@ -23,11 +23,11 @@ const NumDisplayCard = ({ numberCardByPage }) => {
             <div onClick={handleClick(8)} className="numCard__number">8</div>
             <div onClick={handleClick(12)} className="numCard__number">12</div>
         </div>
-    )
+    );
 }
 
 NumDisplayCard.propTypes = {
     numberCardByPage: PropTypes.func.isRequired,  
-}
+};
 
 export default NumDisplayCard;

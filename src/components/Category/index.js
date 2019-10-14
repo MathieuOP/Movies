@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style/Category.scss';
+import './Category.scss';
 
-const Category = ({category, selected, filterMovies}) => {
+const Category = ({ filterMovies, selected, category}) => {
     const handleClick = (e) => {
         const category = e.currentTarget.textContent;
-
         filterMovies(category);
-       
-    }
+    };
 
     return (
         <div 
-            key={category}
             onClick={handleClick}
             className={selected ? 'category category--active' : 'category'}
         >
@@ -25,7 +22,6 @@ Category.propTypes = {
     category: PropTypes.string.isRequired,
     selected: PropTypes.bool.isRequired,
     filterMovies: PropTypes.func.isRequired,    
-}
-  
+};
 
 export default Category;

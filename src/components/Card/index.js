@@ -1,22 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaRegThumbsUp, FaRegThumbsDown } from 'react-icons/fa';
-import './style/Card.scss';
+import './Card.scss';
 
-
-const Card = ({ id, title, category, likes, dislikes, statusLike, statusDislike, deleteMovie, like, dislike }) => {
-
+const Card = ({
+    deleteMovie,
+    id,
+    category,
+    likes,
+    dislikes,
+    statusLike,
+    statusDislike,
+    title,
+    like,
+    dislike
+}) => {
     const handleClickDeleteButton = (id, category) => () => {
         deleteMovie(id, category);
-    }
+    };
 
     const handleClickButtonLike = (id) => () => {
         like(id);
-    }
+    };
 
     const handleClickButtonDislike = (id) => () => {
         dislike(id);
-    }
+    };
       
     return (
         <div className="card">
@@ -58,6 +67,7 @@ const Card = ({ id, title, category, likes, dislikes, statusLike, statusDislike,
 }
 
 Card.propTypes = {
+    deleteMovie: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
@@ -66,7 +76,6 @@ Card.propTypes = {
     statusDislike: PropTypes.bool.isRequired,
     like: PropTypes.func.isRequired,
     dislike: PropTypes.func.isRequired,
-    deleteMovie: PropTypes.func.isRequired,
 }
 
 export default Card;

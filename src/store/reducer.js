@@ -1,5 +1,24 @@
-import types from './types';
-import selectors from './selectors';
+import {
+    GET_MOVIES,
+    DELETE_MOVIE,
+    LIKE,
+    DISLIKE,
+    PAGINATION,
+    FILTER_MOVIES,
+    NUM_CARD_BY_PAGE
+} from './types';
+
+import {
+    selectedMovies,
+    filteringMovies,
+    currentCategoriesSelected,
+    deleteMovieById,
+    getMovieByCategory,
+    filteringMoviesByCategory,
+    likeAMovie,
+    dislikeAMovie,
+    getLengthMoviesSelected
+} from './selectors';
 
 /**
  * Initial State
@@ -15,62 +34,61 @@ const initialState = {
   
 /**
  * Reducer
- */
+*/
 const reducer = (state = initialState, action = {}) => {
     switch (action.type) {
-        case types.GET_MOVIES:
-
+        case GET_MOVIES:
             return state = {
                 ...state,
                 movies: [
                     ...action.movies,
                 ],
                 categoryMovies: [
-                    ...action.categoryMovies,
+                    ...action.categoriesMovies,
                 ],
                 moviesLength: action.movies.length,
             }
-        case types.DELETE_MOVIE:
-            const arrMoviesUpdated = selectors.deleteMovieById(state, action);
-            const moviesLengthAfterDeleteAMovie = (selectors.selectedMovies(state).length - 1);
+        case DELETE_MOVIE:
+            const arrMoviesUpdated = deleteMovieById(state, action);
+            const moviesLengthAfterDeleteAMovie = (selectedMovies(state).length - 1);
             
             return {
                 ...state,
-                movies: selectors.deleteMovieById(state, action),
+                movies: deleteMovieById(state, action),
                 categoryMovies: (arrMoviesUpdated.length === 0) ? [] :
-                selectors.getMovieByCategory(arrMoviesUpdated, action) === undefined ? 
-                selectors.filteringMoviesByCategory(state, action) : state.categoryMovies,
+                getMovieByCategory(arrMoviesUpdated, action) === undefined ? 
+                filteringMoviesByCategory(state, action) : state.categoryMovies,
                 moviesLength: moviesLengthAfterDeleteAMovie,
                 startSlice: moviesLengthAfterDeleteAMovie % state.numberCardByPage === 0 && state.startSlice !== 0
                 ? state.startSlice - state.numberCardByPage : state.startSlice,
                 endSlice: moviesLengthAfterDeleteAMovie % state.numberCardByPage === 0 && state.endSlice !== state.numberCardByPage ?
                 state.endSlice - state.numberCardByPage : state.endSlice,
             }
-        case types.LIKE:
+        case LIKE:
             return {
                 ...state,
-                movies: selectors.likeAMovie(state, action),
+                movies: likeAMovie(state, action),
                 
                 
             }
-        case types.DISLIKE:
+        case DISLIKE:
             return {
                 ...state,
-                movies: selectors.dislikeAMovie(state, action),
+                movies: dislikeAMovie(state, action),
             }
-        case types.FILTER_MOVIES:
+        case FILTER_MOVIES:
             const categorySelectedFalse = state.categoryMovies.find(data => data.selected === false);
-            const checkIfAllCategoryIsTrue = selectors.filteringMovies(state, action, categorySelectedFalse).find(data => data.chosenCategory === false);
+            const checkIfAllCategoryIsTrue = filteringMovies(state, action, categorySelectedFalse).find(data => data.chosenCategory === false);
 
             return {
                 ...state,
-                movies: selectors.filteringMovies(state, action, categorySelectedFalse),
-                categoryMovies: selectors.currentCategoriesSelected(state, action, categorySelectedFalse, checkIfAllCategoryIsTrue),
-                moviesLength: selectors.getLengthMoviesSelected(state, action, categorySelectedFalse),
+                movies: filteringMovies(state, action, categorySelectedFalse),
+                categoryMovies: currentCategoriesSelected(state, action, categorySelectedFalse, checkIfAllCategoryIsTrue),
+                moviesLength: getLengthMoviesSelected(state, action, categorySelectedFalse),
                 startSlice: 0,
                 endSlice: state.numberCardByPage,
             }
-        case types.PAGINATION: 
+        case PAGINATION: 
             const { currentButton } = action;
 
             return {
@@ -78,7 +96,7 @@ const reducer = (state = initialState, action = {}) => {
                 startSlice: currentButton === 'prev' ? state.startSlice - state.numberCardByPage : state.startSlice + state.numberCardByPage,
                 endSlice: currentButton === 'prev'  ? state.endSlice - state.numberCardByPage : state.endSlice + state.numberCardByPage,
             }
-        case types.NUM_CARD_BY_PAGE:
+        case NUM_CARD_BY_PAGE:
             const { number } = action;
             const { startSlice, endSlice, numberCardByPage } = state;
             const condition = numberCardByPage !== number;

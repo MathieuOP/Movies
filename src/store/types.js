@@ -1,17 +1,7 @@
-const GET_MOVIES = 'GET_MOVIES';
-const DELETE_MOVIE = 'DELETE_MOVIE';
-const LIKE = 'LIKE';
-const DISLIKE = 'DISLIKES';
-const FILTER_MOVIES = 'FILTER_MOVIES';
-const PAGINATION = 'PAGINATION';
-const NUM_CARD_BY_PAGE = 'NUM_CARD_BY_PAGE';
-
-export default {
-    GET_MOVIES,
-    DELETE_MOVIE,
-    LIKE,
-    DISLIKE,
-    PAGINATION,
-    FILTER_MOVIES,
-    NUM_CARD_BY_PAGE
-}
+export const GET_MOVIES = 'GET_MOVIES';
+export const DELETE_MOVIE = 'DELETE_MOVIE';
+export const LIKE = 'LIKE';
+export const DISLIKE = 'DISLIKES';
+export const FILTER_MOVIES = 'FILTER_MOVIES';
+export const PAGINATION = 'PAGINATION';
+export const NUM_CARD_BY_PAGE = 'NUM_CARD_BY_PAGE';

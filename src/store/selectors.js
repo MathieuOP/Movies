@@ -1,9 +1,9 @@
-const selectedMovies = (state) => (
+export const selectedMovies = (state) => (
     state.movies.filter(data => data.chosenCategory === true)
 );
 
 
-const filteringMovies = (state, action, categorySelectedFalse) => (
+export const filteringMovies = (state, action, categorySelectedFalse) => (
     state.movies.map(data => {
         if (action.category === 'All' && categorySelectedFalse === undefined) {
             return {
@@ -30,7 +30,7 @@ const filteringMovies = (state, action, categorySelectedFalse) => (
     })
 );
 
-const currentCategoriesSelected = (state, action, categorySelectedFalse, checkIfAllCategoryIsTrue) => (
+export const currentCategoriesSelected = (state, action, categorySelectedFalse, checkIfAllCategoryIsTrue) => (
     state.categoryMovies.map(data => {
         if (action.category !== 'All' && checkIfAllCategoryIsTrue === undefined) {
             return {
@@ -71,23 +71,23 @@ const currentCategoriesSelected = (state, action, categorySelectedFalse, checkIf
     })
 );
 
-const getLengthMoviesSelected = (state, action, categorySelectedFalse) => (
+export const getLengthMoviesSelected = (state, action, categorySelectedFalse) => (
     filteringMovies(state, action, categorySelectedFalse).filter(data => data.chosenCategory === true).length
 );
 
-const deleteMovieById = (state, action) => (
+export const deleteMovieById = (state, action) => (
     state.movies.filter(movie => movie.id !== action.id)
-)
+);
 
-const getMovieByCategory = (arrMovies, action) => (
+export const getMovieByCategory = (arrMovies, action) => (
     arrMovies.find(data => data.category === action.category)
-)
+);
 
-const filteringMoviesByCategory = (state, action) => (
+export const filteringMoviesByCategory = (state, action) => (
     state.categoryMovies.filter(data => data.category !== action.category)
-)
+);
 
-const likeAMovie = (state, action) => (
+export const likeAMovie = (state, action) => (
     state.movies.map(movie => {
         if (movie.id === action.id) {
             return {
@@ -103,7 +103,7 @@ const likeAMovie = (state, action) => (
     })
 );
 
-const dislikeAMovie = (state, action) => (
+export const dislikeAMovie = (state, action) => (
     state.movies.map(movie => {
         if (movie.id === action.id) {
             return {
@@ -118,15 +118,3 @@ const dislikeAMovie = (state, action) => (
         return movie;
     })
 );
-
-export default {
-    selectedMovies,
-    filteringMovies,
-    currentCategoriesSelected,
-    deleteMovieById,
-    getMovieByCategory,
-    filteringMoviesByCategory,
-    likeAMovie,
-    dislikeAMovie,
-    getLengthMoviesSelected
-}

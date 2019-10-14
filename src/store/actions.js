@@ -1,46 +1,46 @@
-import types from './types';
+import {
+    GET_MOVIES,
+    DELETE_MOVIE,
+    LIKE,
+    DISLIKE,
+    PAGINATION,
+    FILTER_MOVIES,
+    NUM_CARD_BY_PAGE
+} from './types';
 
-const getMovies = () => ({
-    type: types.GET_MOVIES,
+export const getMovies = (movies, categoriesMovies) => ({
+    type: GET_MOVIES,
+    movies,
+    categoriesMovies,
 });
 
-const deleteMovie = (id, category) => ({
-    type: types.DELETE_MOVIE,
+export const deleteMovie = (id, category) => ({
+    type: DELETE_MOVIE,
     id,
     category,
 });
 
-const like = (id) => ({
-    type: types.LIKE,
+export const like = (id) => ({
+    type: LIKE,
     id,
 });
 
-const dislike = (id) => ({
-    type: types.DISLIKE,
+export const dislike = (id) => ({
+    type: DISLIKE,
     id,
 });
 
-const filterMovies = (category) => ({
-    type: types.FILTER_MOVIES,
+export const filterMovies = (category) => ({
+    type: FILTER_MOVIES,
     category,
 });
 
-const pagination = (currentButton) => ({
-    type: types.PAGINATION,
+export const pagination = (currentButton) => ({
+    type: PAGINATION,
     currentButton,
 });
 
-const numberCardByPage = (number) => ({
-    type: types.NUM_CARD_BY_PAGE,
+export const numberCardByPage = (number) => ({
+    type: NUM_CARD_BY_PAGE,
     number,
 });
-
-export default {
-    getMovies,
-    deleteMovie,
-    like,
-    dislike,
-    filterMovies,
-    pagination,
-    numberCardByPage,
-}

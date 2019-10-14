@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Pagination from '../components/Pagination';
+import Pagination from 'components/Pagination';
 
 // Action Creators
-import actions from '../store/actions';
+import { pagination } from 'store/actions';
  
 const mapStateToProps = state => ({
     startSlice: state.startSlice,
@@ -18,7 +18,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     pagination: (currentButton) => (
-        dispatch(actions.pagination(currentButton))
+        dispatch(pagination(currentButton))
     ),
 });
 

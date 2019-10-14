@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Category from 'components/Category';
+import App from 'components/App';
 
 // Action Creators
-import { filterMovies } from 'store/actions';
+import { getMovies } from 'store/actions';
  
 const mapStateToProps = null;
 
 const mapDispatchToProps = dispatch => ({
-  filterMovies: (category) => (
-    dispatch(filterMovies(category))
+  getMovies: (movies, categoriesMovies) => (
+    dispatch(getMovies(movies, categoriesMovies))
   )
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Category);
+)(App);
